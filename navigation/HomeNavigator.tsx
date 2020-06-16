@@ -5,9 +5,8 @@ import Home from '../screens/home/Home';
 import Profile from '../screens/home/Profile';
 import Search from '../screens/home/Search';
 import { AntDesign } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
 
-export default function HomeNavigator() {
+export default function HomeNavigator({ setIsLoggedin }) {
 	const Tab = createBottomTabNavigator();
 
 	return (
@@ -16,6 +15,7 @@ export default function HomeNavigator() {
 				activeTintColor: 'tomato',
 				inactiveTintColor: 'gray',
 			}}
+			screenOptions={{}}
 		>
 			<Tab.Screen
 				options={{
@@ -41,8 +41,9 @@ export default function HomeNavigator() {
 					),
 				}}
 				name="Profile"
-				component={Profile}
-			/>
+			>
+				{(props) => <Profile {...props} setIsLoggedin={setIsLoggedin} />}
+			</Tab.Screen>
 			<Tab.Screen
 				options={{
 					tabBarIcon: ({ focused, color, size }) => (

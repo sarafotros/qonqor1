@@ -7,10 +7,12 @@ import SignUp from '../screens/authorization/SignUp';
 
 const Stack = createStackNavigator();
 
-export default function AuthNavigator() {
+export default function AuthNavigator({ setIsLoggedin }) {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
-			<Stack.Screen name="signUp" component={SignUp} />
+			<Stack.Screen name="signUp">
+				{(props) => <SignUp {...props} setIsLoggedin={setIsLoggedin} />}
+			</Stack.Screen>
 			<Stack.Screen name="login" component={Login} />
 		</Stack.Navigator>
 	);

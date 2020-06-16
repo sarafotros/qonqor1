@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function SignUp() {
+export default function SignUp({ setIsLoggedin }) {
 	const navigation = useNavigation();
 	return (
 		<SafeAreaView>
@@ -14,6 +14,7 @@ export default function SignUp() {
 					title="LOGIN"
 				/>
 			</View>
+			<Button title="Login" onPress={() => setIsLoggedin(true)} />
 		</SafeAreaView>
 	);
 }
